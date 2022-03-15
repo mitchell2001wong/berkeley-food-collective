@@ -19,11 +19,19 @@ class UsrEmailsController < ApplicationController
   def edit
   end
 
+  # GET /usr_emails/verify
+  def verifyshow
+  end
+
   # POST /usr_emails/verify
   def verify
     input_email = params[:email]
-    if input_email == "jack@example.com"
-      format.html { redirect_to "usr_email#index", notice: "Usr email was successfully created." }
+    #@user_emails = UsrEmail.all
+    found = UsrEmail.find_by email: input_email
+    if found != nil#input_email == "jack@example.com"
+      redirect_to "/usr_emails#index", notice: "User found.", allow_other_host: true
+    else
+      redirect_to "/usr_emails#index", notice: "User not found", allow_other_host: true
     end
   end
 

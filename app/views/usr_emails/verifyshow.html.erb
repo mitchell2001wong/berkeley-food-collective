@@ -1,0 +1,6 @@
+<%= form_with url: "/verify", method: :post do |form| %>
+  <h1>Enter email</h1>
+  <%= form.text_field :email %>
+  <br>
+  <%= form.submit "Submit" %>
+<% end %>
