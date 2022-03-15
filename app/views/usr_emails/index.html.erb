@@ -1,0 +1,14 @@
+<p style="color: green"><%= notice %></p>
+
+<h1>Usr emails</h1>
+
+<div id="usr_emails">
+  <% @usr_emails.each do |usr_email| %>
+    <%= render usr_email %>
+    <p>
+      <%= link_to "Show this usr email", usr_email %>
+    </p>
+  <% end %>
+</div>
+
+<%= link_to "New usr email", new_usr_email_path %>

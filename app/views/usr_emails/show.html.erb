@@ -1,0 +1,10 @@
+<p style="color: green"><%= notice %></p>
+
+<%= render @usr_email %>
+
+<div>
+  <%= link_to "Edit this usr email", edit_usr_email_path(@usr_email) %> |
+  <%= link_to "Back to usr emails", usr_emails_path %>
+
+  <%= button_to "Destroy this usr email", @usr_email, method: :delete %>
+</div>
