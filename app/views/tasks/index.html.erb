@@ -150,19 +150,31 @@
 <div class="center">
   <h5>Incomplete Tasks</h5>
 </div>
-<% @first = true %>
+<% @count = 0 %>
+<% @completed = false %>
 <% @tasks.each do |task| %>
+  <% if @count == @num_incomplete && !@completed %>
+    <% @count = 0 %>
+    <% @completed = true %>
+    <div class="center">
+      <h5>Completed Tasks</h5>
+    </div>
+  <% end %>
   <!-- Tasks div -->
   <div id="tasks-div" class="container">
     <!-- Task panel -->
-    <div class="task-panel row px-1 py-1 border-bottom px-1<%= @first ? " border-top" : "" %> border-dark">
-      <% @first = false %>
+    <div class="task-panel row px-1 py-1 border-bottom px-1<%= @count = 0 ? " border-top" : "" %> border-dark">
+      <% @count += 1 %>
       <!-- Checkbox -->
       <div class = 'col-1'>
         &nbsp
       </div>
       <div class="col-1 d-flex flex-column justify-content-center align-items-center">
-        <%= button_to "✔️", checkmark_path(:task => task, :user => current_user), class: "btn btn-success" %>
+        <% if @completed %>
+          <%= button_to "❌", checkmark_path(:task => task, :user => current_user), class: "btn btn-danger" %>
+        <% else %>
+          <%= button_to "✔️", checkmark_path(:task => task, :user => current_user), class: "btn btn-success" %>
+        <% end %>
       </div>
 
       <!-- Right side of panel -->
@@ -175,6 +187,11 @@
           <%= task.category %>
         </span>
         </div>
+        <% if @completed %>
+          <p class="fw-lighter small m-0"><small>
+            Completed by <%=  task.user_complete  %> at <%= task.complete_time %>
+          </small></p>
+        <% end %>
         <p class="fw-lighter small m-0"><small>
           Posted by <%=   task.user_add   %> at <%=   task.added   %>
         </small></p>
@@ -191,14 +208,13 @@
       </div>
       <div class="col-2 d-flex flex-column justify-content-center align-items-center">
         <div class = 'triple-dot-menu popup' onclick="function myFunction(s) {
-            const popup = document.getElementById(s);
-            popup.classList.toggle('show');
+          const popup = document.getElementById(s);
+          popup.classList.toggle('show');
           }
           myFunction('<%= task.__id__ %>')">
-<!--            <span class="popuptext" id='<%#= task.__id__ %>'>-->
-<!--              <button type = "button" class = "btn btn-sm btn-danger" data-bs-toggle = "modal" data-bs-target = "#edit-task-modal">Edit Task</button>-->
-<!--            </span>-->
-        </div>
+          <!--            <span class="popuptext" id='<%#= task.__id__ %>'>-->
+          <!--              <button type = "button" class = "btn btn-sm btn-danger" data-bs-toggle = "modal" data-bs-target = "#edit-task-modal">Edit Task</button>-->
+          <!--            </span>-->
         </div>
       </div>
     </div>
@@ -217,7 +233,7 @@
     <div id="tasks-div" class="container">
       <!-- Task panel -->
       <div class="task-panel row px-1 py-1 border-bottom<%= @first ? " border-top" : "" %> border-dark">
-      <% @first = false %>
+        <% @first = false %>
         <!-- Checkbox -->
         <div class = 'col-1'>
           &nbsp
