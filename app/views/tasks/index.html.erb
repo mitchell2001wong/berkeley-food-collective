@@ -163,7 +163,8 @@
           &nbsp
         </div>
         <div class="col-1 d-flex flex-column justify-content-center align-items-center">
-          <%= button_to "✔️", checkmark_path(:task => task, :user => current_user), class: "btn btn-success" %>
+
+          <%#= button_to "✔️", checkmark_path(:task => task, :user => current_user), class: "btn btn-success" %>
         </div>
 
         <!-- Right side of panel -->
@@ -172,6 +173,9 @@
             <h5 class="fw-bold m-0">
               <%=   task.name   %>
             </h5>
+            <span class="badge bg-dark">
+            <%= task.category %>
+          </span>
           </div>
           <p class="fw-lighter small m-0"><small>
             Posted by <%=   task.user_add   %> at <%=   task.added   %>
@@ -183,9 +187,6 @@
           </p>
         </div>
         <div class="col-2 d-flex flex-column justify-content-center align-items-center">
-          <span class="badge bg-dark">
-            <%= task.category %>
-          </span>
           <h1 class = <%= priority_color task.priority %>>
             <%= priority_visualizer task.priority  %>
           </h1>
