@@ -7,7 +7,7 @@ class TasksController < ApplicationController
              else
                Task.where(category: @filter)
              end
-    @tasks = @tasks.sort_by { |task| [task.completed == true, -task.priority, task.added] }
+    @tasks = @tasks.sort_by { |task| [task.completed ? 0 : 1, -task.priority, task.added] }
     @categories = Task.all.uniq(&:category)
     @users = User.all
   end
