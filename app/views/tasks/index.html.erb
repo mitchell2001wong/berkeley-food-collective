@@ -187,7 +187,7 @@
             </div>
             <div class = "mb-2">
               <%= label_tag :task_description, "Task Description", class: "form-label" %>
-              <%= text_area_tag :task_description, nil, :placeholder => "Add new task description...", :class => "form-control", :content => task.description %>
+              <%= text_area_tag :task_description, task.description, :placeholder => "Add new task description...", :class => "form-control" %>
             </div>
             <div class = "mb-2">
               <%= label_tag :task_category, "Task Category", class: "form-label" %>
