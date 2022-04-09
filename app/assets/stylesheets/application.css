@@ -63,12 +63,3 @@
 .popup .show {
     visibility: visible;
 }
-
-.flex-parent-element {
-    display: flex;
-}
-
-.flex-child-element {
-    flex: 1;
-    margin: 10px;
-}
