@@ -3,9 +3,9 @@
   <!-- General Nav bar -->
   <nav class = "navbar navbar-expand-lg navbar-light bg-dark p-0">
     <div class = "container-fluid">
-      <li class = "navbar-brand leftli" href = "#">
+      <a class = "navbar-brand leftli" href = "#">
         <%= link_to((image_tag "bsfc_logo.png", {:alt => "Berkeley Student Food Collective Logo", :width => 40, :height => 40}), announcements_path) %>
-      </li>
+      </a>
       <ul class = "navbar-nav">
         <li class = "nav-item rightli">
           <small style = "color: white;">Welcome <%= current_user.name %></small>
