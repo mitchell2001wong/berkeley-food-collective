@@ -3,11 +3,11 @@
   <!-- General Nav bar -->
   <nav class = " d-flex bd-highlight justify-content-between navbar navbar-expand-lg navbar-light bg-dark p-0">
     <div class = "container-fluid">
-      <a class = "bd-highlight navbar-brand" href = "#">
+      <a class = "bd-highlight navbar-brand bd-highlight" href = "#">
         <%= link_to((image_tag "bsfc_logo.png", {:alt => "Berkeley Student Food Collective Logo", :width => 40, :height => 40}), announcements_path) %>
       </a>
     </div>
-    <div class = "navbar-nav">
+    <div class = "navbar-nav bd-highlight">
       <li class = "nav-item">
         <small style = "color: white;">Welcome <%= current_user.name %></small>
       </li>
