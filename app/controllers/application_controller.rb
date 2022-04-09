@@ -6,8 +6,10 @@ class ApplicationController < ActionController::Base
   private
 
   def require_login
-    flash[:danger] = "Please log in to access this page."
-    redirect_to root_path unless current_user
+    unless current_user
+      flash[:danger] = "Please log in to access this page."
+      redirect_to root_path
+    end
   end
 
 end
