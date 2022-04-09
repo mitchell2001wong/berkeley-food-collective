@@ -150,12 +150,10 @@
 <div class="center">
   <h5>Incomplete Tasks</h5>
 </div>
-<% count = 0 %>
-<% completed = false %>
 <% @tasks.each do |task| %>
-  <% if count == @num_incomplete and !completed %>
-    <% count = 0 %>
-    <% completed = true %>
+  <% if @count == @num_incomplete and !completed %>
+    <% @count = 0 %>
+    <% @completed = true %>
     <div class="center">
       <h5>Completed Tasks</h5>
     </div>
@@ -163,14 +161,14 @@
   <!-- Tasks div -->
   <div id="tasks-div" class="container">
     <!-- Task panel -->
-    <div class="task-panel row px-1 py-1 border-bottom px-1<%= count = 0 ? " border-top" : "" %> border-dark">
-      <% count += 1 %>
+    <div class="task-panel row px-1 py-1 border-bottom px-1<%= @count = 0 ? " border-top" : "" %> border-dark">
+      <% @count += 1 %>
       <!-- Checkbox -->
       <div class = 'col-1'>
         &nbsp
       </div>
       <div class="col-1 d-flex flex-column justify-content-center align-items-center">
-        <% if completed %>
+        <% if @completed %>
           <%= button_to "❌", checkmark_path(:task => task, :user => current_user), class: "btn btn-danger" %>
         <% else %>
           <%= button_to "✔️", checkmark_path(:task => task, :user => current_user), class: "btn btn-success" %>

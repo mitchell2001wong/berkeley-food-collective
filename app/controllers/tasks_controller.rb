@@ -8,6 +8,9 @@ class TasksController < ApplicationController
                Task.where(category: @filter)
              end
     @tasks = @tasks.sort_by { |task| [task.completed ? 1 : 0, -task.priority, task.added] }
+    @num_incomplete = @tasks.select { |task| task.completed == false }.count
+    @count = 0
+    @completed = false
     @categories = Task.all.uniq(&:category)
     @users = User.all
   end
