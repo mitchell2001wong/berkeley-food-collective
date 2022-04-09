@@ -1,14 +1,12 @@
 class ApplicationController < ActionController::Base
   include SessionsHelper
 
-  before_filter :require_login
+  append_before_action :require_login
 
   private
 
   def require_login
-    unless current_user
-      redirect_to login_url
-    end
+    redirect_to login_url unless current_user
   end
-  
+
 end
