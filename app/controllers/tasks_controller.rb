@@ -29,7 +29,7 @@ class TasksController < ApplicationController
     task.user_complete = user.name
     task.complete_time = DateTime.now
     task.save!
-    redirect_to tasks_path(category: params[:category])
+    redirect_to tasks_path
   end
 
   def new; end
