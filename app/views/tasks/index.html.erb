@@ -70,7 +70,7 @@
           </div>
           <div class = "mb-2">
             <%= label_tag :task_category, "Task Category", class: "form-label" %>
-            <%= select_tag :task_category, options_for_select(@all_categories), :class => "form-control" %>
+            <%= select_tag :task_category, raw("<option>Inventory</option><option>Register</option>"), :class => "form-control" %>
           </div>
           <div class = "d-flex justify-content-center">
             <%= label_tag nil, "Task Priority", class: "form-label" %>
