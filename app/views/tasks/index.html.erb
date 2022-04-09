@@ -183,7 +183,7 @@
           <%= form_tag tasks_create_path(:task => task), :method => "post", :class => "" do %>
             <div class = "mb-2">
               <%= label_tag :task_name, "Task Name", class: "form-label" %>
-              <%= text_field_tag :task_name, nil, :placeholder => "New Task...", :class => "form-control", :value => task.name %>
+              <%= text_field_tag :task_name, nil, :placeholder => "New Task...", :class => "form-control", :content => task.name %>
             </div>
             <div class = "mb-2">
               <%= label_tag :task_description, "Task Description", class: "form-label" %>
