@@ -153,16 +153,10 @@
         </p>
       </div>
       <div class="col-1 d-flex flex-column justify-content-center align-items-center">
-        <div class = 'triple-dot-menu popup' onclick="function myFunction(s) {
-          const popup = document.getElementById(s);
-          popup.classList.toggle('show');
-          }
-          myFunction('<%= task.__id__ %>')">
-            <span class="popuptext" id='<%= task.__id__ %>'>
+        <div class = 'triple-dot-menu popup'>
               <button type = "button" class = "btn btn-sm btn-danger" data-bs-toggle = "modal" data-bs-target = "#edit-task-modal<%= task.__id__ %>">
                 Edit Task
               </button>
-            </span>
         </div>
       </div>
     </div>
