@@ -3,7 +3,7 @@ class ApplicationController < ActionController::Base
 
   before_filter :require_login
 
-private
+  private
 
   def require_login
     unless current_user
