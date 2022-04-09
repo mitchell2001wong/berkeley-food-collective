@@ -185,7 +185,7 @@
           <%= task.category %>
         </span>
         </div>
-        <% if completed %>
+        <% if @completed %>
           <p class="fw-lighter small m-0"><small>
             Completed by <%=  task.user_complete  %> at <%= task.complete_time %>
           </small></p>
