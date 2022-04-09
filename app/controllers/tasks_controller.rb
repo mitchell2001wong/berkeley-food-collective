@@ -1,7 +1,7 @@
 class TasksController < ApplicationController
   def index
     @filter = params[:category]
-
+    @all_categories = %w[Inventory Register]
     @tasks = if @filter.blank?
                Task.all
              else
@@ -13,7 +13,7 @@ class TasksController < ApplicationController
     @num_incomplete = @tasks.select { |task| task.completed == false }.count
     @count = 0
     @completed = false
-    @categories = Task.all.uniq(&:category)
+    @curr_categories = Task.all.uniq(&:category)
     @users = User.all
   end
 
@@ -29,7 +29,7 @@ class TasksController < ApplicationController
     task.user_complete = user.name
     task.complete_time = DateTime.now
     task.save!
-    redirect_to tasks_path
+    redirect_to tasks_path(category: params[:category])
   end
 
   def new; end
