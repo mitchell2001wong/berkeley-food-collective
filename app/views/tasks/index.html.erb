@@ -120,9 +120,10 @@
           <picture type = 'button' data-bs-toggle = 'modal' data-bs-target = '#confirm-toggle-modal<%= task.__id__ %>'>
             <%= image_tag "checked_checkbox.png", {:alt => "Checked Checkbox", :width => 25, :height => 25} %>
           </picture>
-<!--          <img src = "../images/checked_checkbox.png" type = "button" width="25" height="25" alt="Checked Checkbox" data-bs-toggle = 'modal' data-bs-target = '#confirm-toggle-modal<%#= task.__id__ %>'>-->
         <% else %>
-          <img src = "../images/empty_checkbox.png" type = "button" width="25" height="25" alt="Empty Checkbox" data-bs-toggle = 'modal' data-bs-target = '#confirm-toggle-modal<%= task.__id__ %>'>
+          <picture type = 'button' data-bs-toggle = 'modal' data-bs-target = '#confirm-toggle-modal<%= task.__id__ %>'>
+            <%= image_tag "empty_checkbox.png", {:alt => "Empty Checkbox", :width => 25, :height => 25} %>
+          </picture>
         <% end %>
       </div>
 
