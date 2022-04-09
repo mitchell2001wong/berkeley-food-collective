@@ -187,11 +187,11 @@
           <%= task.category %>
         </span>
         </div>
-        <%# if @completed %>
-<!--          <p class="fw-lighter small m-0"><small>-->
-<!--            Completed by <%#=  task.user_complete  %> at <%#= task.complete_time %>-->
-<!--          </small></p>-->
-        <%# end %>
+        <% if @completed %>
+          <p class="fw-lighter small m-0"><small>
+            Completed by <%=  task.user_complete  %> at <%= task.complete_time %>
+          </small></p>
+        <% end %>
         <p class="fw-lighter small m-0"><small>
           Posted by <%=   task.user_add   %> at <%=   task.added   %>
         </small></p>
