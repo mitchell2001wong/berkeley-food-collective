@@ -181,18 +181,17 @@
           <h5 class="fw-bold m-0 ">
             <%=   task.name   %>
           </h5>
-          <span class="badge bg-dark">
-          <%= task.category %>
-        </span>
         </div>
         <% if task.completed %>
-          <p class="fw-lighter small m-0"><small>
-            Completed by <%=  task.user_complete  %> at <%= task.complete_time %>
-          </small></p>
+          <p class="fw-lighter small m-0">
+            <small>
+              Completed by <%=  task.user_complete  %> at <%= task.complete_time %>
+            </small></p>
         <% end %>
-        <p class="fw-lighter small m-0"><small>
-          Posted by <%=   task.user_add   %> at <%=   task.added   %>
-        </small></p>
+        <p class="fw-lighter small m-0">
+          <small>
+            Posted by <%=   task.user_add   %> at <%=   task.added   %>
+          </small></p>
         <p class="m-0">
           <small>
             <%= task.description %>
@@ -200,6 +199,9 @@
         </p>
       </div>
       <div class="col-1 d-flex flex-column justify-content-center align-items-center">
+        <span class="badge bg-dark">
+          <%= task.category %>
+          </span>
         <div class = 'triple-dot-menu popup' onclick="function myFunction(s) {
           const popup = document.getElementById(s);
           popup.classList.toggle('show');
