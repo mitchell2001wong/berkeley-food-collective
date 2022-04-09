@@ -44,7 +44,7 @@ class TasksController < ApplicationController
     new_task.user_add = current_user.name
     new_task.completed = false
     new_task.save!
-    redirect_to tasks_path
+    redirect_to tasks_path(category: params[:category])
   end
 
 end
