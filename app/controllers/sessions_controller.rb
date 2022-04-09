@@ -1,6 +1,7 @@
 class SessionsController < ApplicationController
-  def new
-  end
+  skip_before_filter :require_login
+  
+  def new; end
 
   def create
     user = User.find_by(email: params[:session][:email].downcase)
@@ -14,6 +15,5 @@ class SessionsController < ApplicationController
     end
   end
 
-  def destroy
-  end
+  def destroy; end
 end
