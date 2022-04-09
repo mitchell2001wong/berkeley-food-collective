@@ -63,3 +63,7 @@
 .popup .show {
     visibility: visible;
 }
+
+.inline-block {
+    display: inline-block;
+}
