@@ -1,4 +1,6 @@
 class TasksController < ApplicationController
+  skip_before_action :require_login
+
   def index
     @filter = params[:category]
     @all_categories = %w[Inventory Register]
