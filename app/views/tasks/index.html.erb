@@ -118,7 +118,7 @@
       <div class="col-1 d-flex flex-column justify-content-center align-items-center">
         <% if task.completed %>
           <%=  link_to((image_tag "checked_checkbox.png", {:alt => "Checked Checkbox", :width => 25, :height => 25}), checkmark_path(:task => task, :user => current_user, :category => params[:category])) %>
-          <img src="checked_checkbox.png" width="25" height="25" alt="">
+          <img src="app\assets\images\checked_checkbox.png" width="25" height="25" alt="">
         <% else %>
           <%=  link_to((image_tag "empty_checkbox.png", {:alt => "Empty Checkbox", :width => 25, :height => 25 }), checkmark_path(:task => task, :user => current_user, :category => params[:category])) %>
         <% end %>
