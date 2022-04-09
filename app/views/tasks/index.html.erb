@@ -115,7 +115,7 @@
     <div class="task-panel row px-1 py-1 border-bottom px-1<%= @count == 0 ? " border-top" : "" %> border-dark">
       <% @count += 1 %>
       <!-- Checkbox -->
-      <div class="col-1 d-flex flex-column justify-content-center align-items-center" data-bs-toggle = 'modal' data-bs-target = '#confirm-completion-modal<%= task.__id__ %>">
+      <div class="col-1 d-flex flex-column justify-content-center align-items-center" data-bs-toggle = 'modal' data-bs-target = '#confirm-completion-modal<%= task.__id__ %>'>
         <% if task.completed %>
           <%=  image_tag "checked_checkbox.png", {:alt => "Checked Checkbox", :width => 25, :height => 25}  %>
         <% else %>
