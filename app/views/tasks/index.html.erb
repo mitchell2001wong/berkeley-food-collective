@@ -175,10 +175,12 @@
       <!-- Right side of panel -->
       <div class="col-10 ps-4 justify-content-between align-items-center">
         <div class="d-flex justify-content-between align-items-center">
-          <div>
+          <div class="inline-block">
             <h5 class = 'fw-bold <%= priority_color task.priority %>'>
               <%= priority_visualizer task.priority  %>
             </h5>
+          </div>
+          <div class="inline-block">
             <h5 class="fw-bold m-0">
               <%=   task.name   %>
             </h5>
