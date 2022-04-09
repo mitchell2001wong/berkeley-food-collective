@@ -7,7 +7,9 @@ class TasksController < ApplicationController
              else
                Task.where(category: @filter)
              end
-    @tasks = @tasks.sort_by { |task| [task.completed ? 1 : 0, -task.priority, task.added] }
+    incomplete_task = @tasks.select { |task| task.completed == false }.sort_by { |task| [-task.priority, task.added] }
+    completed_tasks = @tasks.select { |task| task.completed == true }.sort_by { |task| [ task.complete_time] }
+    @tasks = incomplete_task + completed_tasks
     @num_incomplete = @tasks.select { |task| task.completed == false }.count
     @count = 0
     @completed = false
