@@ -36,7 +36,7 @@
         <label>
           <select onchange = "location = this.value;" class = "border-0 bg-light rounded text-secondary">
             <option value = "<%= tasks_path %>" <%= params[:category].blank? ? 'selected' : ''%>>All Categories</option>
-            <% @categories.each do |task| %>
+            <% @curr_categories.each do |task| %>
               <option value = "<%= tasks_path(:category => task.category) %>" <%= params[:category] == task.category ? 'selected' : ''%>><%= task.category %></option>
             <% end %>
           </select>
@@ -70,7 +70,7 @@
           </div>
           <div class = "mb-2">
             <%= label_tag :task_category, "Task Category", class: "form-label" %>
-            <%= select_tag :task_category, raw("<option>Inventory</option><option>Register</option>"), :class => "form-control" %>
+            <%= select_tag :task_category, @all_categories, :class => "form-control" %>
           </div>
           <div class = "d-flex justify-content-center">
             <%= label_tag nil, "Task Priority", class: "form-label" %>
