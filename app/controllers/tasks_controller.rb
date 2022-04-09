@@ -36,8 +36,6 @@ class TasksController < ApplicationController
   def new; end
 
   def create
-    redirect_to tasks_delete_path(task: params[:task]) if params[:commit] == 'Delete Task'
-
     new_task = if params[:task].blank?
                  Task.new
                else
