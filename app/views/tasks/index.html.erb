@@ -173,11 +173,16 @@
         <div class = "modal-body">
           <div class = "d-flex justify-content-center">
             <%= image_tag "bsfc_logo.png", {:alt => "Berkeley Student Food Collective Logo", :width => 100, :height => 100} %>
-            <h5><%= task.name %></h5>
+          </div>
+          <h5 class = "d-flex justify-content-center">
+            <%= task.name %>
+          </h5>
+          <div class = "d-flex justify-content-center">
+            <%= task.description %>
           </div>
           <% if task.completed %>
             <div class = "mb-2 d-flex justify-content-center">
-              <%= button_to "Undo Task", checkmark_path(:task => task, :user => current_user, :category => params[:category]), :class => "btn btn-success" %>
+              <%= button_to "Undo Task Completion", checkmark_path(:task => task, :user => current_user, :category => params[:category]), :class => "btn btn-success" %>
             </div>
           <% else %>
             <div class = "mb-2 d-flex justify-content-center">
