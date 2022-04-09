@@ -170,7 +170,7 @@
         &nbsp
       </div>
       <div class="col-1 d-flex flex-column justify-content-center align-items-center">
-        <% if task.completed %>
+        <% if completed %>
           <%= button_to "❌", checkmark_path(:task => task, :user => current_user), class: "btn btn-danger" %>
         <% else %>
           <%= button_to "✔️", checkmark_path(:task => task, :user => current_user), class: "btn btn-success" %>
@@ -187,7 +187,7 @@
           <%= task.category %>
         </span>
         </div>
-        <% if task.completed %>
+        <% if completed %>
           <p class="fw-lighter small m-0"><small>
             Completed by <%=  task.user_complete  %> at <%= task.complete_time %>
           </small></p>
