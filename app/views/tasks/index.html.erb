@@ -139,12 +139,12 @@
         <% if task.completed %>
           <p class="fw-lighter small m-0">
             <small>
-              Completed by <%=  task.user_complete  %> at <%= task.complete_time %>
+              Completed by <%=  task.user_complete  %> at <%= task.complete_time.parse(string).strftime('%F %T %z') %>
             </small></p>
         <% end %>
         <p class="fw-lighter small m-0">
           <small>
-            Posted by <%=   task.user_add   %> at <%=   task.added   %>
+            Posted by <%=   task.user_add   %> at <%=   task.added.parse(string).strftime('%F %T %z')   %>
          </small></p>
         <p class="m-0">
           <small>
