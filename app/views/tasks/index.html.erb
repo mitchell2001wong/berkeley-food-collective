@@ -153,7 +153,7 @@
 <% count = 0 %>
 <% completed = false %>
 <% @tasks.each do |task| %>
-  <% if count == 2 and !completed %>
+  <% if count == @num_incomplete and !completed %>
     <% count = 0 %>
     <% completed = true %>
     <div class="center">
