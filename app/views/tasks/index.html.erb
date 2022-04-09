@@ -183,7 +183,7 @@
           </div>
           <% if task.completed %>
             <div class = "mb-2 d-flex justify-content-center">
-              <%= button_to "Undo Task Completion", checkmark_path(:task => task, :user => current_user, :category => params[:category]), :class => "btn btn-success" %>
+              <%= button_to "Undo Task Completion", checkmark_path(:task => task, :user => current_user, :category => params[:category]), :class => "btn btn-danger" %>
             </div>
           <% else %>
             <div class = "mb-2 d-flex justify-content-center">
