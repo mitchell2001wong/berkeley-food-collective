@@ -35,7 +35,11 @@ class TasksController < ApplicationController
   def new; end
 
   def create
-    new_task = Task.new
+    new_task = if params[:task].blank?
+                 Task.new
+               else
+                 Task.find(params[:task])
+               end
     new_task.name = params[:task_name]
     new_task.description = params[:task_description]
     new_task.category = params[:task_category]
