@@ -170,11 +170,11 @@
         &nbsp
       </div>
       <div class="col-1 d-flex flex-column justify-content-center align-items-center">
-        <%# if @completed %>
+        <% if task.completed %>
           <%= button_to "❌", checkmark_path(:task => task, :user => current_user), class: "btn btn-danger" %>
-        <%# else %>
-          <%#= button_to "✔️", checkmark_path(:task => task, :user => current_user), class: "btn btn-success" %>
-        <%# end %>
+        <% else %>
+          <%= button_to "✔️", checkmark_path(:task => task, :user => current_user), class: "btn btn-success" %>
+        <% end %>
       </div>
 
       <!-- Right side of panel -->
