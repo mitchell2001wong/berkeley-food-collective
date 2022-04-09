@@ -18,8 +18,9 @@ class TasksController < ApplicationController
   end
 
   def clear
-    Task.clear_tasks
-    redirect_to tasks_path
+    task = Task.find(params[:task])
+    Task.delete(task)
+    redirect_to tasks_path(category: params[:category])
   end
 
   def checkmark

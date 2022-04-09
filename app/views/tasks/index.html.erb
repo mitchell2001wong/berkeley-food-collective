@@ -204,6 +204,7 @@
             </div>
             <div class = "mb-2 d-flex justify-content-center">
               <%= submit_tag "Edit Task", :class => "btn btn-danger" %>
+              <%= button_to "Edit Task", tasks_delete_path(task: task), :class => "btn btn-danger" %>
             </div>
           <% end %>
         </div>
