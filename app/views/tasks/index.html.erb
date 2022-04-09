@@ -151,7 +151,7 @@
   <h5>Incomplete Tasks</h5>
 </div>
 <% @tasks.each do |task| %>
-  <% if @count == @num_incomplete and !@completed %>
+  <% if @count == @num_incomplete && !@completed %>
     <% @count = 0 %>
     <% @completed = true %>
     <div class="center">
