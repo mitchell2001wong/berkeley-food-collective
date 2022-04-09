@@ -118,6 +118,7 @@
       <div class="col-1 d-flex flex-column justify-content-center align-items-center">
         <% if task.completed %>
           <%=  link_to((image_tag "checked_checkbox.png", {:alt => "Checked Checkbox", :width => 25, :height => 25}), checkmark_path(:task => task, :user => current_user, :category => params[:category])) %>
+          <img src="checked_checkbox.png" width="25" height="25" alt="">
         <% else %>
           <%=  link_to((image_tag "empty_checkbox.png", {:alt => "Empty Checkbox", :width => 25, :height => 25 }), checkmark_path(:task => task, :user => current_user, :category => params[:category])) %>
         <% end %>
@@ -153,13 +154,32 @@
         </p>
       </div>
       <div class="col-1 d-flex flex-column justify-content-center align-items-center">
-        <div class = 'triple-dot-menu popup' data-bs-toggle = 'modal' data-bs-target = '#edit-task-modal<%= task.__id__ %>'>
-
-        </div>
+        <div class = 'triple-dot-menu popup' data-bs-toggle = 'modal' data-bs-target = '#edit-task-modal<%= task.__id__ %>'></div>
       </div>
     </div>
   </div>
 
+  <!-- Confirm Complete Task Modal -->
+  <div class = "modal fade" id = "confirm-confirmation-modal<%= task.__id__ %>" tabindex = "-1" aria-labelledby = "confirm-confirmation-modal<%= task.__id__ %>" aria-hidden = "true">
+    <div class = "modal-dialog">
+      <div class = "modal-content">
+        <div class = "modal-header">
+          <h5 class = "modal-title">Confirm Task Completion</h5>
+          <button type = "button" class = "btn-close" data-bs-dismiss = "modal" aria-label = "Close"></button>
+        </div>
+        <div class = "modal-body">
+          <div class = "d-flex justify-content-center">
+            <%= image_tag "bsfc_logo.png", {:alt => "Berkeley Student Food Collective Logo", :width => 100, :height => 100} %>
+          </div>
+          
+          <div class = "mb-2 d-flex justify-content-center">
+            <%= button_to "Delete Task", tasks_delete_path(task: task), :class => "btn btn-danger" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <!-- Edit Task Modal -->
   <div class = "modal fade" id = "edit-task-modal<%= task.__id__ %>" tabindex = "-1" aria-labelledby = "edit-task-modal<%= task.__id__ %>" aria-hidden = "true">
     <div class = "modal-dialog">
