@@ -117,7 +117,7 @@
       <!-- Checkbox -->
       <div class="col-1 d-flex flex-column justify-content-center align-items-center" data-bs-toggle = 'modal' data-bs-target = '#confirm-completion-modal<%= task.__id__ %>'>
         <% if task.completed %>
-          <img src = "/images/checked_checkbox.png">
+          <img src = "/images/checked_checkbox.png" width="25" height="25" alt="Checked Checkbox">
           <%=  link_to((image_tag "checked_checkbox.png", {:alt => "Checked Checkbox", :width => 25, :height => 25 }), checkmark_path(:task => task, :user => current_user, :category => params[:category])) %>
         <% else %>
           <%=  link_to((image_tag "empty_checkbox.png", {:alt => "Empty Checkbox", :width => 25, :height => 25 }), checkmark_path(:task => task, :user => current_user, :category => params[:category])) %>
