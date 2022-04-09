@@ -168,6 +168,9 @@
         &nbsp
       </div>
       <div class="col-1 d-flex flex-column justify-content-center align-items-center">
+        <h1 class = <%= priority_color task.priority %>>
+          <%= priority_visualizer task.priority  %>
+        </h1>
         <% if task.completed %>
           <%=  link_to((image_tag "checked_checkbox.png", {:alt => "Checked Checkbox", :width => 25, :height => 25}), checkmark_path(:task => task, :user => current_user)) %>
         <% else %>
@@ -198,11 +201,6 @@
             <%= task.description %>
           </small>
         </p>
-      </div>
-      <div class="col-1 d-flex flex-column justify-content-center align-items-center">
-        <h1 class = <%= priority_color task.priority %>>
-          <%= priority_visualizer task.priority  %>
-        </h1>
       </div>
       <div class="col-2 d-flex flex-column justify-content-center align-items-center">
         <div class = 'triple-dot-menu popup' onclick="function myFunction(s) {
