@@ -1,9 +1,5 @@
 class TasksController < ApplicationController
 
-  def show
-
-  end
-
   def index
     @filter = params[:category]
     @all_categories = %w[Inventory Register Engineering]
@@ -58,7 +54,7 @@ class TasksController < ApplicationController
   end
 
   def update
-    task = Task.find(params[:task])
+    task = Task.find(params[:id])
     task.name = params[:task_name]
     task.description = params[:task_description]
     task.category = params[:task_category]
