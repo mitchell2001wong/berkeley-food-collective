@@ -14,7 +14,7 @@ class TasksController < ApplicationController
     @num_incomplete = @tasks.select { |task| task.completed == false }.count
     @count = 0
     @completed = false
-    @curr_categories = @all_categories # Task.all.uniq(&:category) if you don't want empty categories to show up
+    @curr_categories = @all_categories
     @users = User.all
   end
 
