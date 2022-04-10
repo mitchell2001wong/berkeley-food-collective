@@ -1,5 +1,9 @@
 class TasksController < ApplicationController
 
+  def show
+
+  end
+
   def index
     @filter = params[:category]
     @all_categories = %w[Inventory Register Engineering]
