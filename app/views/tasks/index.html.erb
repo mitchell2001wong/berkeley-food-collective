@@ -246,7 +246,7 @@
             </div>
           <% end %>
           <div class = "mb-2 d-flex justify-content-center">
-            <%= button_to "Delete Task", tasks_delete_path(task: task), :class => "btn btn-danger", method: :get %>
+            <%= button_to "Delete Task", task_path(id: task, category: task.category), :method => "delete", :class => "btn btn-danger" %>
           </div>
         </div>
       </div>

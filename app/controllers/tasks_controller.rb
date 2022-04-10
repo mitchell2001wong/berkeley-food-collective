@@ -18,8 +18,8 @@ class TasksController < ApplicationController
     @users = User.all
   end
 
-  def delete
-    task = Task.find(params[:task])
+  def destroy
+    task = Task.find(params[:id])
     Task.delete(task)
     redirect_to tasks_path(category: params[:category])
   end
