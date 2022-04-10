@@ -2,7 +2,7 @@ class TasksController < ApplicationController
 
   def index
     @filter = params[:category]
-    @all_categories = %w[Inventory Register]
+    @all_categories = %w[Inventory Register Engineering]
     @tasks = if @filter.blank?
                Task.all
              else
