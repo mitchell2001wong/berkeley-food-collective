@@ -25,7 +25,7 @@ class TasksController < ApplicationController
   end
 
   def checkmark
-    task = Task.find(params[:task])
+    task = Task.find(params[:id])
     task.completed = !task.completed
     user = User.find(params[:user])
     task.user_complete = user.name
