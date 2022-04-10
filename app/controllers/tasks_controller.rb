@@ -37,11 +37,7 @@ class TasksController < ApplicationController
   def new; end
 
   def create
-    new_task = if params[:task].blank?
-                 Task.new
-               else
-                 Task.find(params[:task])
-               end
+    new_task = Task.new
     new_task.name = params[:task_name]
     new_task.description = params[:task_description]
     new_task.category = params[:task_category]
@@ -50,6 +46,22 @@ class TasksController < ApplicationController
     new_task.user_add = current_user.name
     new_task.completed = false
     new_task.save!
+    if params[:task_category] == params[:category]
+      redirect_to tasks_path(category: params[:category])
+    else
+      redirect_to tasks_path
+    end
+  end
+
+  def update
+    task = Task.find(params[:task])
+    task.name = params[:task_name]
+    task.description = params[:task_description]
+    task.category = params[:task_category]
+    task.priority = params[:priority]
+    task.added = DateTime.now
+    task.user_add = current_user.name
+    task.save!
     if params[:task_category] == params[:category]
       redirect_to tasks_path(category: params[:category])
     else
