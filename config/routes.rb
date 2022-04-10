@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   root 'sessions#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
-  post 'tasks/create' => 'tasks#create'
   post 'checkmark' => 'tasks#checkmark'
   delete 'logout' => 'sessions#destroy'
   resources :announcements
