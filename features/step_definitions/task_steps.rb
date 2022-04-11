@@ -9,3 +9,7 @@ Given(/the following tasks in the database/) do |task_table|
   When(/I go on the tasks page/) do
     visit tasks_path
   end
+
+  Then /"(.*)" should appear before "(.*)"/ do |a, b|
+    page.body.should =~ /#{a}.*#{b}/m
+  end
