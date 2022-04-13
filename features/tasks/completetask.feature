@@ -25,4 +25,4 @@ Feature: Checking off Tasks
   Scenario: Checking off a task
     And I check-off "Count cash in register"
     Then I should see "Confirm Task Completion"
-    And I press "Complete Task" for "Count cash in register"
+    
