@@ -84,6 +84,10 @@ Given(/the following tasks in the database/) do |task_table|
     page.find('div', id: "add-task-modal").find('option', text: category).select_option
   end
 
+  When /^(?:|I )pick "(.*)" from the filter by category dropdown/ do |category|
+    visit '/tasks?category=' + category
+  end
+
   When /^(?:|I )pick "(.*)" as the priority on the add task modal/ do |priority|
     if priority == "Low"
         number = 1

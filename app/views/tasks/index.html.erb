@@ -34,7 +34,7 @@
       <div class = "d-flex align-items-center">
         <small class = "me-1 my-2">Filter tasks by</small>
         <label>
-          <select onchange = "location = this.value;" class = "border-0 bg-light rounded text-secondary">
+          <select onchange = "location = this.value;" id="category-filter" class = "border-0 bg-light rounded text-secondary">
             <option value = "<%= tasks_path %>" <%= params[:category].blank? ? 'selected' : ''%>>All Categories</option>
             <% @curr_categories.each do |category| %>
               <option value = "<%= tasks_path(:category => category) %>" <%= params[:category] == category ? 'selected' : ''%>><%= category %></option>
