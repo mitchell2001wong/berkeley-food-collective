@@ -14,7 +14,7 @@ Feature: Viewing Tasks
       | Count cash in register | do this asap please!   | Register    | 3        | 2001-01-01 | Roberto Cardenas |               |               | false |
       | Finished task          | someone completed this | Inventory   | 3        | 2001-01-01 | Roberto Cardenas |   2001-01-02  | Andrew Mo     | true |
       | low priority 1         | low pri description 1  | Engineering | 1        | 2001-01-01 | Roberto Cardenas |               |               | false |
-      | low priority 2         | low pri description 2  | Register    | 1        | 2001-01-01 | Roberto Cardenas |               |               | false |
+      | low priority 2         | low pri description 2  | Register    | 1        | 2001-01-01 | Andrew Mo        |               |               | false |
       | med priority           | med pri description 1  | Register    | 2        | 2001-01-01 | Roberto Cardenas |               |               | false |
 
     When I start on the login page
@@ -61,6 +61,13 @@ Feature: Viewing Tasks
     Then "Engineering" should be the category for "low priority 1"
     Then "Register" should be the category for "low priority 2"
     Then "Register" should be the category for "med priority"
+
+  Scenario: Tasks have correct user_added
+    Then "Roberto" should be the user_added for "Count cash in register"
+    Then "Roberto" should be the user_added for "Finished task"
+    Then "Roberto" should be the user_added for "low priority 1"
+    Then "Andrew" should be the user_added for "low priority 2"
+    Then "Roberto" should be the user_added for "med priority"
 
 
 

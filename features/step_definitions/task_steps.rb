@@ -28,3 +28,8 @@ Given(/the following tasks in the database/) do |task_table|
     card = find('div', id: 'task-card-'+task_name)
     card.should have_selector('span', text: category)
   end
+
+  Then /"(.*)" should be the user_added for "(.*)"/ do |user_added, task_name|
+    card = find('div', id: 'task-card-'+task_name)
+    card.should have_selector('small', text: "Posted by "+user_added)
+  end
