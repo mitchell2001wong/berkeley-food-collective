@@ -69,6 +69,15 @@ Feature: Viewing Tasks
     Then "Andrew" should be the user_added for "low priority 2"
     Then "Roberto" should be the user_added for "med priority"
 
+  Scenario: Completed tasks have correct user_complete
+    Then "Andrew" should be the user_complete for "Finished task"
+
+  Scenario: Incomplete tasks should not say "Completed by"
+    Then "Count cash in register" should not say completed
+    Then "low priority 1" should not say completed
+    Then "low priority 2" should not say completed
+    Then "med priority" should not say completed
+
 
 
   

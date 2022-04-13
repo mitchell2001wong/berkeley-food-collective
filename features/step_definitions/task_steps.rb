@@ -33,3 +33,13 @@ Given(/the following tasks in the database/) do |task_table|
     card = find('div', id: 'task-card-'+task_name)
     card.should have_selector('small', text: "Posted by "+user_added)
   end
+
+  Then /"(.*)" should be the user_complete for "(.*)"/ do |user_complete, task_name|
+    card = find('div', id: 'task-card-'+task_name)
+    card.should have_selector('small', text: "Completed by "+user_complete)
+  end
+
+  Then /"(.*)" should not say completed/ do |task_name|
+    card = find('div', id: 'task-card-'+task_name)
+    expect(card).to have_no_css('small.complete')
+  end
