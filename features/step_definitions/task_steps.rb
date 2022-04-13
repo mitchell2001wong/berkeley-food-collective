@@ -43,3 +43,29 @@ Given(/the following tasks in the database/) do |task_table|
     card = find('div', id: 'task-card-'+task_name)
     expect(card).to have_no_css('small.complete')
   end
+
+  Then /the category dropdown should have the correct options/ do 
+    page.body.should have_select('task_category', :options => ['Inventory', 'Register', 'Engineering'])
+  end
+
+  Then /the category dropdown should have "(.*)" selected/ do |category|
+    page.body.should have_select('task_category', selected: category)
+  end
+
+  Then /there should be the correct priority options/ do 
+    page.body.should have_selector('input', id: "priority_1")
+    page.body.should have_selector('input', id: "priority_2")
+    page.body.should have_selector('input', id: "priority_3")
+  end
+
+  Then /the "(.*)" priority button should be checked/ do |priority|
+    if priority == "Low"
+        number = 1
+    elsif priority == "Medium"
+        number = 2
+    else 
+        number = 3
+    end
+    add_modal = page.find('div', id: "add-task-modal")
+    expect(add_modal.find('input', id: "priority_#{number}")).to be_checked
+  end
