@@ -10,12 +10,12 @@ Feature: Viewing Tasks
       | Andrew Mo        | andrewmo@bsfc.coop        |
 
     Given the following tasks in the database
-      | name                   | description            | category | priority | added      | user_add         | complete_time | user_complete | completed |
-      | Count cash in register | do this asap please!   | Register | 3        | 2001-01-01 | Roberto Cardenas |               |               | false |
-      | Finished task          | someone completed this | Register | 3        | 2001-01-01 | Roberto Cardenas |   2001-01-02  | Andrew Mo     | true |
-      | low priority 1         | low pri description 1  | Register | 1        | 2001-01-01 | Roberto Cardenas |               |               | false |
-      | low priority 2         | low pri description 2  | Register | 1        | 2001-01-01 | Roberto Cardenas |               |               | false |
-      | med priority           | med pri description 1  | Register | 2        | 2001-01-01 | Roberto Cardenas |               |               | false |
+      | name                   | description            | category    | priority | added      | user_add         | complete_time | user_complete | completed |
+      | Count cash in register | do this asap please!   | Register    | 3        | 2001-01-01 | Roberto Cardenas |               |               | false |
+      | Finished task          | someone completed this | Inventory   | 3        | 2001-01-01 | Roberto Cardenas |   2001-01-02  | Andrew Mo     | true |
+      | low priority 1         | low pri description 1  | Engineering | 1        | 2001-01-01 | Roberto Cardenas |               |               | false |
+      | low priority 2         | low pri description 2  | Register    | 1        | 2001-01-01 | Roberto Cardenas |               |               | false |
+      | med priority           | med pri description 1  | Register    | 2        | 2001-01-01 | Roberto Cardenas |               |               | false |
 
     When I start on the login page
     And I fill in "session_email" with "robertocardenas@bsfc.coop"
@@ -54,6 +54,13 @@ Feature: Viewing Tasks
     Then "low pri description 1" should be the description for "low priority 1"
     Then "low pri description 2" should be the description for "low priority 2"
     Then "med pri description 1" should be the description for "med priority"
+
+  Scenario: Tasks have correct categories
+    Then "Register" should be the category for "Count cash in register"
+    Then "Inventory" should be the category for "Finished task"
+    Then "Engineering" should be the category for "low priority 1"
+    Then "Register" should be the category for "low priority 2"
+    Then "Register" should be the category for "med priority"
 
 
 

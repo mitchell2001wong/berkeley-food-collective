@@ -23,3 +23,8 @@ Given(/the following tasks in the database/) do |task_table|
     card = find('div', id: 'task-card-'+task_name)
     card.should have_selector('small', text: description)
   end
+
+  Then /"(.*)" should be the category for "(.*)"/ do |category, task_name|
+    card = find('div', id: 'task-card-'+task_name)
+    card.should have_selector('span', text: category)
+  end
