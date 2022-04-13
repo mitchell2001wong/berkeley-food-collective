@@ -29,6 +29,11 @@ Feature: Viewing Tasks
     Then I should see "low priority 2"
     Then I should see "Completed register"
 
+  Scenario: All categories are available in the dropdown
+    Then I should see "Register"
+    And I should see "Inventory"
+    And I should see "Engineering"
+    
   Scenario: All tasks from a specific category and none from the others
     When I pick "Register" from the filter by category dropdown
     Then I should see "Count cash in register"
