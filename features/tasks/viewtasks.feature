@@ -22,7 +22,7 @@ Feature: Viewing Tasks
     And I press "Login"
     And I go on the tasks page
 
-  Scenario: All tasks and descriptions show up
+  Scenario: All tasks show up
     Then I should see "Count cash in register"
     Then I should see "Finished task"
     Then I should see "low priority 1"
@@ -47,5 +47,14 @@ Feature: Viewing Tasks
     Then "!" should be the priority for "low priority 1"
     Then "!" should be the priority for "low priority 2"
     Then "!!" should be the priority for "med priority"
+
+  Scenario: Tasks have correct descriptions
+    Then "do this asap please!" should be the description for "Count cash in register"
+    Then "someone completed this" should be the description for "Finished task"
+    Then "low pri description 1" should be the description for "low priority 1"
+    Then "low pri description 2" should be the description for "low priority 2"
+    Then "med pri description 1" should be the description for "med priority"
+
+
 
   

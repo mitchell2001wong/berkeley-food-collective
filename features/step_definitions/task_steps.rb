@@ -15,17 +15,11 @@ Given(/the following tasks in the database/) do |task_table|
   end
 
   Then /"(.*)" should be the priority for "(.*)"/ do |priority, task_name|
-    # page.body.should =~ /#{priority}.*#{task_name}/m
-    # regexp = Regexp.new("#{priority}\s*#{task_name}")
-    # page.should =~ regexp
-    # pri = find('h5', text: priority)
-
-    # task = find('h5', text: task_name)
     card = find('div', id: 'task-card-'+task_name)
     card.should have_selector('h5', text: priority)
-    # expect(task).to have_sibling('h5', text: priority, left_of: task)
-    # page.should have_selector('h5', text: task_name)
-    # page.should have_selector('div', id: 'task-card-'+task_name)
-    # page.body.should =~ /task-card-#{task_name}/m
+  end
 
+  Then /"(.*)" should be the description for "(.*)"/ do |description, task_name|
+    card = find('div', id: 'task-card-'+task_name)
+    card.should have_selector('small', text: description)
   end
