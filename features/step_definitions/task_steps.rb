@@ -98,3 +98,12 @@ Given(/the following tasks in the database/) do |task_table|
   When /^(?:|I )add the task/ do
     page.find('#submit-add-task').click()
   end
+
+  When /^(?:|I )check-off "(.*)"/ do |task_name| 
+    panel = find('div', id: 'task-panel-'+task_name)
+    panel.find('picture').click()
+  end
+
+  When /^(?:|I )confirm complete task/ do
+    
+  end
