@@ -40,3 +40,12 @@ Feature: Viewing Tasks
     Then "med priority" should appear before "low priority 1"
     Then "med priority" should appear before "low priority 2"
     And "low priority 2" should appear before "Finished task"
+
+  Scenario: Tasks have correct priority marker
+    Then "!!!" should be the priority for "Count cash in register"
+    Then "!!!" should be the priority for "Finished task"
+    Then "!" should be the priority for "low priority 1"
+    Then "!" should be the priority for "low priority 2"
+    Then "!!" should be the priority for "med priority"
+
+  
