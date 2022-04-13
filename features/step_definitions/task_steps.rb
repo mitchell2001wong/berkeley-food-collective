@@ -69,3 +69,32 @@ Given(/the following tasks in the database/) do |task_table|
     add_modal = page.find('div', id: "add-task-modal")
     expect(add_modal.find('input', id: "priority_#{number}")).to be_checked
   end
+
+  When /^(?:|I )enter task name "(.*)"/ do |name|
+    name_field = page.find('div', id: "add-task-modal").find('input', id: "task_name")
+    name_field.set(name)
+  end
+
+  When /^(?:|I )enter task description "(.*)"/ do |description|
+    description_field = page.find('div', id: "add-task-modal").find('textarea', id: "task_description")
+    description_field.set(description)
+  end
+
+  When /^(?:|I )pick "(.*)" from the category dropdown on the add task modal/ do |category|
+    page.find('div', id: "add-task-modal").find('option', text: category).select_option
+  end
+
+  When /^(?:|I )pick "(.*)" as the priority on the add task modal/ do |priority|
+    if priority == "Low"
+        number = 1
+    elsif priority == "Medium"
+        number = 2
+    else 
+        number = 3
+    end
+    page.find('div', id: "add-task-modal").find('input', id: "priority_#{number}").choose()
+  end
+
+  When /^(?:|I )add the task/ do
+    page.find('#submit-add-task').click()
+  end
