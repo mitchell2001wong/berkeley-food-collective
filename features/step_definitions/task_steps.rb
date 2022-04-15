@@ -70,18 +70,44 @@ Given(/the following tasks in the database/) do |task_table|
     expect(add_modal.find('input', id: "priority_#{number}")).to be_checked
   end
 
-  When /^(?:|I )enter task name "(.*)"/ do |name|
+  Then /the "(.*)" priority button on the edit task modal should be checked for the task with id "(.*)"/ do |priority, id|
+    if priority == "Low"
+        number = 1
+    elsif priority == "Medium"
+        number = 2
+    else 
+        number = 3
+    end
+    add_modal = page.find('div', id: "edit-task-modal-#{id}")
+    expect(add_modal.find('input', id: "priority_#{number}")).to be_checked
+  end
+
+  When /^(?:|I )enter task name "(.*)" on the add task modal/ do |name|
     name_field = page.find('div', id: "add-task-modal").find('input', id: "task_name")
     name_field.set(name)
   end
 
-  When /^(?:|I )enter task description "(.*)"/ do |description|
+  When /^(?:|I )enter task name "(.*)" on the edit task modal for the task with id "(.*)"/ do |name, id|
+    name_field = page.find('div', id: "edit-task-modal-#{id}").find('input', id: "task_name")
+    name_field.set(name)
+  end
+
+  When /^(?:|I )enter task description "(.*)" on the add task modal/ do |description|
     description_field = page.find('div', id: "add-task-modal").find('textarea', id: "task_description")
+    description_field.set(description)
+  end
+  
+  When /^(?:|I )enter task description "(.*)" on the edit task modal for the task with id "(.*)"/ do |description, id|
+    description_field = page.find('div', id: "edit-task-modal-#{id}").find('textarea', id: "task_description")
     description_field.set(description)
   end
 
   When /^(?:|I )pick "(.*)" from the category dropdown on the add task modal/ do |category|
     page.find('div', id: "add-task-modal").find('option', text: category).select_option
+  end
+
+  When /^(?:|I )pick "(.*)" from the category dropdown on the edit task modal for the task with id "(.*)"/ do |category, id|
+    page.find('div', id: "edit-task-modal-#{id}").find('option', text: category).select_option
   end
 
   When /^(?:|I )pick "(.*)" as the priority on the add task modal/ do |priority|
@@ -95,6 +121,17 @@ Given(/the following tasks in the database/) do |task_table|
     page.find('div', id: "add-task-modal").find('input', id: "priority_#{number}").choose()
   end
 
+  When /^(?:|I )pick "(.*)" as the priority on the edit task modal for the task with id "(.*)"/ do |priority, id|
+    if priority == "Low"
+        number = 1
+    elsif priority == "Medium"
+        number = 2
+    else 
+        number = 3
+    end
+    page.find('div', id: "edit-task-modal-#{id}").find('input', id: "priority_#{number}").choose()
+  end
+
   When /^(?:|I )add the task/ do
     page.find('#submit-add-task').click()
   end
@@ -102,6 +139,11 @@ Given(/the following tasks in the database/) do |task_table|
   When /^(?:|I )(?:un)*check-off "(.*)"/ do |task_name| 
     panel = find('div', id: 'task-panel-'+task_name)
     panel.find('picture').click()
+  end
+
+  When /^(?:|I )tap the dots to edit "(.*)"/ do |task_name| 
+    panel = find('div', id: 'task-panel-'+task_name)
+    panel.find('div', class: 'triple-dot-menu').click()
   end
 
   When /^(?:|I )confirm "(.*)" for the task with id "(.*)"/ do |action, id|
@@ -112,7 +154,7 @@ Given(/the following tasks in the database/) do |task_table|
         modal = find('div', id: "confirm-toggle-modal-#{id}")
         modal.find_button('Complete Task').click()
     elsif action == "Edit Task"
-        modal = find('div', id: "edit-task-moda-l#{id}")
+        modal = find('div', id: "edit-task-modal-#{id}")
         modal.find_button('Edit Task').click()
     else #this would be the delete task case
         modal = find('div', id: "edit-task-modal-#{id}")

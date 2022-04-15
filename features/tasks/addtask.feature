@@ -36,8 +36,8 @@ Feature: Adding Tasks
     Then the "Low" priority button should be checked
 
   Scenario: Add a task with default category and priority
-    When I enter task name "New Default Task"
-    And I enter task description "new task description"
+    When I enter task name "New Default Task" on the add task modal
+    And I enter task description "new task description" on the add task modal
     And I add the task
     Then I should see "New Default Task"
     Then "!" should be the priority for "New Default Task"
@@ -49,8 +49,8 @@ Feature: Adding Tasks
 
   Scenario: Add a task with different category and priority
     When I press "Add Task +"
-    When I enter task name "task 1"
-    And I enter task description "task 1 description"
+    When I enter task name "task 1" on the add task modal
+    And I enter task description "task 1 description" on the add task modal
     And I pick "Engineering" from the category dropdown on the add task modal
     Then the category dropdown should have "Engineering" selected
     And I pick "Medium" as the priority on the add task modal
