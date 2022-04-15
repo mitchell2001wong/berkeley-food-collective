@@ -29,4 +29,16 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
+<<<<<<< HEAD
 /config/application.yml
+=======
+
+/config/application.yml
+
+.DS_Store
+**/.DS_Store
+
+.idea/
+
+coverage/
+>>>>>>> main
