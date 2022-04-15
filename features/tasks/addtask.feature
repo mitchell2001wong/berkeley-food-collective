@@ -30,8 +30,8 @@ Feature: Adding Tasks
     Then I should see "Task Category"
     Then I should see "Inventory"
     Then I should see "Task Priority"
-    Then the category dropdown should have the correct options
-    Then the category dropdown should have "Inventory" selected
+    Then the category dropdown on the modal should have the correct options
+    Then the category dropdown on the modal should have "Inventory" selected
     Then there should be the correct priority options
     Then the "Low" priority button should be checked
 
@@ -52,7 +52,7 @@ Feature: Adding Tasks
     When I enter task name "task 1" on the add task modal
     And I enter task description "task 1 description" on the add task modal
     And I pick "Engineering" from the category dropdown on the add task modal
-    Then the category dropdown should have "Engineering" selected
+    Then the category dropdown on the modal should have "Engineering" selected
     And I pick "Medium" as the priority on the add task modal
     Then the "Medium" priority button should be checked
     And I add the task

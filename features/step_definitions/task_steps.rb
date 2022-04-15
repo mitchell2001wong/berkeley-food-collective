@@ -1,4 +1,4 @@
-Given(/the following tasks in the database/) do |task_table|
+  Given(/the following tasks in the database/) do |task_table|
     task_table.hashes.each do |task|
         Task.create(task)
         # each returned element will be a hash whose key is the table header.
@@ -44,12 +44,20 @@ Given(/the following tasks in the database/) do |task_table|
     expect(card).to have_no_css('small.complete')
   end
 
-  Then /the category dropdown should have the correct options/ do 
-    page.body.should have_select('task_category', :options => ['Inventory', 'Register', 'Engineering'])
+  Then /the category dropdown (.*)should have the correct options/ do |location|
+    if location == "on the modal "
+        page.body.should have_select('task_category', :options => ['Inventory', 'Register', 'Engineering'])
+    else #this is the case that we're testing the category dropdown for filtering
+        page.find('div', id: "filter-category-dropdown").should have_select(:options => ['All Categories', 'Inventory', 'Register', 'Engineering'])
+    end
   end
 
-  Then /the category dropdown should have "(.*)" selected/ do |category|
-    page.body.should have_select('task_category', selected: category)
+  Then /the category dropdown (.*)should have "(.*)" selected/ do |location, category|
+    if location == "on the modal "
+        page.body.should have_select('task_category', selected: category)
+    else #this is the case that we're testing the category dropdown for filtering
+        page.find('div', id: "filter-category-dropdown").should have_select(selected: category)
+    end
   end
 
   Then /there should be the correct priority options/ do 
@@ -160,5 +168,12 @@ Given(/the following tasks in the database/) do |task_table|
         modal = find('div', id: "edit-task-modal-#{id}")
         modal.find_button('Delete Task').click()
     end
-    
+  end
+  When /^(?:|I )filter tasks by "(.*)"/ do |category|
+    page.find('div', id: "filter-category-dropdown").find('option', text: category).select_option
+    if category == "All Categories"
+        visit tasks_path
+    else
+        visit tasks_path(category: category)
+    end
   end

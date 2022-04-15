@@ -32,8 +32,8 @@ Feature: Editing Tasks
     Then "Task Description" should appear before "do this asap please!"
     Then I should see "Task Category"
     Then I should see "Task Priority"
-    Then the category dropdown should have the correct options
-    Then the category dropdown should have "Register" selected
+    Then the category dropdown on the modal should have the correct options
+    Then the category dropdown on the modal should have "Register" selected
     Then there should be the correct priority options
     Then the "High" priority button on the edit task modal should be checked for the task with id "1"
 
