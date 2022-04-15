@@ -4,8 +4,9 @@ Rails.application.routes.draw do
   root 'sessions#new'
   get 'login' => 'sessions#new'
   post 'login' => 'sessions#create'
-  delete 'logout' => 'sessions#destroy'
   post 'checkmark' => 'tasks#checkmark'
+  post 'logout' => 'sessions#destroy'
+
   resources :announcements
   resources :tasks
 end

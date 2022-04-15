@@ -8,7 +8,6 @@
 User.delete_all
 Task.delete_all
 
-
 user_objects = [
   {
     name: 'Andrew Mo',

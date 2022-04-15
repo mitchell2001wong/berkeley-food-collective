@@ -29,9 +29,6 @@
 
 # Ignore master key for decrypting credentials and more.
 /config/master.key
-<<<<<<< HEAD
-/config/application.yml
-=======
 
 /config/application.yml
 
@@ -41,4 +38,3 @@
 .idea/
 
 coverage/
->>>>>>> main
