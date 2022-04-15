@@ -99,11 +99,24 @@ Given(/the following tasks in the database/) do |task_table|
     page.find('#submit-add-task').click()
   end
 
-  When /^(?:|I )check-off "(.*)"/ do |task_name| 
+  When /^(?:|I )(?:un)*check-off "(.*)"/ do |task_name| 
     panel = find('div', id: 'task-panel-'+task_name)
     panel.find('picture').click()
   end
 
-  When /^(?:|I )confirm complete task/ do
+  When /^(?:|I )confirm "(.*)" for the task with id "(.*)"/ do |action, id|
+    if  action == "Undo Task Completion"
+        modal = find('div', id: "confirm-toggle-modal-#{id}")
+        modal.find_button('Undo Task Completion').click()
+    elsif action == "Complete Task"
+        modal = find('div', id: "confirm-toggle-modal-#{id}")
+        modal.find_button('Complete Task').click()
+    elsif action == "Edit Task"
+        modal = find('div', id: "edit-task-moda-l#{id}")
+        modal.find_button('Edit Task').click()
+    else #this would be the delete task case
+        modal = find('div', id: "edit-task-modal-#{id}")
+        modal.find_button('Delete Task').click()
+    end
     
   end

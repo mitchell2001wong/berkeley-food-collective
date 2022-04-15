@@ -117,11 +117,11 @@
       <!-- Checkbox -->
       <div class="col-1 d-flex flex-column justify-content-center align-items-center">
         <% if task.completed %>
-          <picture type = 'button' data-bs-toggle = 'modal' data-bs-target = '#confirm-toggle-modal<%= task.__id__ %>'>
+          <picture type = 'button' data-bs-toggle = 'modal' data-bs-target = '#confirm-toggle-modal-<%= task.id %>'>
             <%= image_tag "checked_checkbox.png", {:alt => "Checked Checkbox", :width => 25, :height => 25} %>
           </picture>
         <% else %>
-          <picture type = 'button' data-bs-toggle = 'modal' data-bs-target = '#confirm-toggle-modal<%= task.__id__ %>'>
+          <picture type = 'button' data-bs-toggle = 'modal' data-bs-target = '#confirm-toggle-modal-<%= task.id %>'>
             <%= image_tag "empty_checkbox.png", {:alt => "Empty Checkbox", :width => 25, :height => 25} %>
           </picture>
         <% end %>
@@ -157,13 +157,13 @@
         </p>
       </div>
       <div class="col-1 d-flex flex-column justify-content-center align-items-center">
-        <div class = 'triple-dot-menu' type = "button" data-bs-toggle = 'modal' data-bs-target = '#edit-task-modal<%= task.__id__ %>'></div>
+        <div class = 'triple-dot-menu' type = "button" data-bs-toggle = 'modal' data-bs-target = '#edit-task-modal-<%= task.id %>'></div>
       </div>
     </div>
   </div>
 
   <!-- Confirm Complete Task Modal -->
-  <div class = "modal fade" id = "confirm-toggle-modal<%= task.__id__ %>" tabindex = "-1" aria-labelledby = "confirm-toggle-modal<%= task.__id__ %>" aria-hidden = "true">
+  <div class = "modal fade" id = "confirm-toggle-modal-<%= task.id %>" tabindex = "-1" aria-labelledby = "confirm-toggle-modal-<%= task.id %>" aria-hidden = "true">
     <div class = "modal-dialog">
       <div class = "modal-content">
         <div class = "modal-header">
@@ -200,7 +200,7 @@
   </div>
   
   <!-- Edit Task Modal -->
-  <div class = "modal fade" id = "edit-task-modal<%= task.__id__ %>" tabindex = "-1" aria-labelledby = "edit-task-modal<%= task.__id__ %>" aria-hidden = "true">
+  <div class = "modal fade" id = "edit-task-modal-<%= task.id %>" tabindex = "-1" aria-labelledby = "edit-task-modal-<%= task.id %>" aria-hidden = "true">
     <div class = "modal-dialog">
       <div class = "modal-content">
         <div class = "modal-header">
