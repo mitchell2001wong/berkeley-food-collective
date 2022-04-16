@@ -34,7 +34,8 @@ class TasksController < ApplicationController
     redirect_to tasks_path(category: params[:category])
   end
 
-  def new; end
+  def new
+  end
 
   def create
     new_task = Task.new
